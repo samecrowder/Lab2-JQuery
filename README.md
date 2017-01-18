@@ -23,19 +23,19 @@ Or in other words:
 - [ ] You make the request to the weatherunderground site and fill in the weather div
 - [ ] Users can query the stackExchange service for questions that have a particular word in the topic
 
-**Submit to learningsuite the URL to your live webpage, along with any comments you have that will make your assignment easier to grade. You should have utilized the github classroom link to get started with the assignment.**
+**Submit to learningsuite the URL to your live webpage, along with any comments you have that will make your assignment easier to grade. Your URL must have the form: xxx.xxx/lab2/weather.html, otherwise you might not get full credit on the lab. You should have utilized the github classroom link to get started with the assignment.**
 
 #### Grading:
 
 
-- You will be graded as follows (there's some room for partial credit, don't worry):
+- You will be graded based on the following (there's some room for partial credit, don't worry):
 
 
-Passoff Level | Behavior | Points
---- | --- | ---
-Minimal Passoff | You've got the basic layout of the weather app Your basic javascript functionality works (suggestions, filling in the city box, etc.) | 45%
-Passoff | Your page is lacking one or two parts of the functionality (ex. the full cities list isn't working, or the API call isn't right, etc.) |	70%
-Basic Passoff | You have all the required weather functionality | 80%
-Good Passoff | You utilize the other required REST service | 90%
-Perfect Passoff | Your page looks really good. This is subjective, so wow us. | 100%
+Behavior | Approximate Points
+--- | ---
+You have the basic layout and parts of the weather application | 30
+A User is suggested the full list of Utah cities with an inputed prefix | 15
+A User can search for an inputed city's weather | 30
+A User can search Stack Exchange for an inputed word | 15
+Your page looks really good. This is subjective, so wow us. | 10
 
