@@ -11,31 +11,24 @@ The weather section should do the following:
 
 3) The submit button will also query the <a href="http://www.wunderground.com/weather/api/d/docs">weatherunderground REST service</a> to get the current weather for that city. These [hints](https://github.com/BYUCS260/Lab2-JQuery/wiki/Connecting-to-WeatherUnderground) may be helpful.
 
-4) There is another input where a user can type a word, with a button that will query the [StackExchange REST service](https://api.stackexchange.com/docs/search) for questions with the word in the topic.  For example, if the user had entered "javascript" in the form, then you would create the following REST request
+You must also add a section where a user can type a word into an input field, with a button that will query the [StackExchange REST service](https://api.stackexchange.com/docs/search) for questions with the word in the topic.  For example, if the user had entered "javascript" in the form, then you would create the following REST request
 
+```
 https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=javascript&site=stackoverflow
+```
 
-Or in other words:
-
-- [ ] You have the basic layout of the weather form (the input box, output, etc.)
-- [ ] As you type characters in the city input, the application suggests legal values
-- [ ] When the submit button is pressed, you correctly fill in the City box
-- [ ] You make the request to the weatherunderground site and fill in the weather div
-- [ ] Users can query the stackExchange service for questions that have a particular word in the topic
-
-**Submit to learningsuite the URL to your live webpage, along with any comments you have that will make your assignment easier to grade. Your URL must have the form: xxx.xxx/lab2/weather.html, otherwise you might not get full credit on the lab. You should have utilized the github classroom link to get started with the assignment.**
 
 #### Grading:
 
-
-- You will be graded based on the following (there's some room for partial credit, don't worry):
-
+- If your page does not work with the test driver (which utilizes a page object like the one in this repository), you will not get points.
+- Grading is based on the following table (subject to change):
 
 Behavior | Approximate Points
 --- | ---
-You have the basic layout and parts of the weather application | 30
-A User is suggested the full list of Utah cities with an inputed prefix | 15
-A User can search for an inputed city's weather | 30
-A User can search Stack Exchange for an inputed word | 15
+You have the basic layout and parts of the application | 25
+Your application correctly suggests cities based on the input value | 20
+A User can search for an inputed city's weather | 20
+A User can search Stack Exchange for an inputed word | 25
 Your page looks really good. This is subjective, so wow us. | 10
 
+- In your efforts to make your page look good, make sure that you don't change the functionality of the assignment or you will be subject to losing points.
