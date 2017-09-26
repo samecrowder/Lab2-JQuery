@@ -11,12 +11,15 @@ The weather section should do the following:
 
 3) The submit button will also query the <a href="http://www.wunderground.com/weather/api/d/docs">weatherunderground REST service</a> to get the current weather for that city. These [hints](https://github.com/BYUCS260/Lab2-JQuery/wiki/Connecting-to-WeatherUnderground) may be helpful.
 
-You must also add a section where a user can type a word into an input field, with a button that will query the [StackExchange REST service](https://api.stackexchange.com/docs/search) for questions with the word in the topic.  For example, if the user had entered "javascript" in the form, then you would create the following REST request
+4) You must also add a section where a user can type a word into an input field, with a button that will query the [StackExchange REST service](https://api.stackexchange.com/docs/search) for questions with the word in the topic.  For example, if the user had entered "javascript" in the form, then you would create the following REST request
 
 ```
 https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=javascript&site=stackoverflow
 ```
-
+You must associate the following IDs with your Stackexchange search boxes
+- #searchStack // The ID for the input field to search stack exchange
+- #searchButton // The ID for the button that will start the search
+- #searchResults // The ID for the results div
 
 #### Grading:
 
