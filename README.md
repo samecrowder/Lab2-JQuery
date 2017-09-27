@@ -3,6 +3,8 @@ First take the <a href="https://www.khanacademy.org/computing/computer-programmi
 
 ![Example of Weather Page](Screen%20Shot%202015-02-20%20at%202.05.21%20PM.png)
 
+You should put your html file in htdocs/lab2/weather.html so that the autograder can access it.  You can rename the github clone to this location.
+
 The weather section should do the following:
 
 1) Allow the user to type characters into a form. With each keystroke, query a <a href="http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q=Pr">REST service</a> that will return a list of cities in utah that have those characters as a prefix. This will provide a hint to the user as to what legal values can be. Put these options into a list. These [hints](https://github.com/BYUCS260/Lab2-JQuery/wiki/Getting-Suggestions-to-Work) may be helpful.
