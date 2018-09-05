@@ -18,14 +18,9 @@ The weather section should do the following:
 ```
 https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=javascript&site=stackoverflow
 ```
-You must associate the following IDs with your Stackexchange search boxes
-- #searchStack // The ID for the input field to search stack exchange
-- #searchButton // The ID for the button that will start the search
-- #searchResults // The ID for the results div
 
 #### Grading:
 
-- If your page does not work with the test driver (which utilizes a page object like the one in this repository), you will not get points.
 - Grading is based on the following table (subject to change):
 
 Behavior | Approximate Points
