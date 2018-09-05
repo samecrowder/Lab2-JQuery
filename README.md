@@ -11,7 +11,7 @@ The weather section should do the following:
 
 2) When the user selects the submit button, take the entry from the form and put it into the CITY box on the page. These [hints](https://github.com/BYUCS260/Lab2-JQuery/wiki/Getting-Submit-to-Work) may be helpful.
 
-3) The submit button will also query the <a href="https://openweathermap.org/api">Open Weather REST Service</a> to get the current weather for that city. These [hints](https://github.com/BYUCS260/Lab2-JQuery/wiki/Connecting-to-WeatherUnderground) may be helpful.
+3) The submit button will also query the <a href="https://openweathermap.org/api">Open Weather REST Service</a> to get the current weather for that city. These [hints](https://github.com/BYUCS260/Lab2-JQuery/wiki/Connecting-to-OpenWeather) may be helpful.
 
 4) You must also add a section where a user can type a word into an input field, with a button that will query the [StackExchange REST service](https://api.stackexchange.com/docs/search) for questions with the word in the topic.  For example, if the user had entered "javascript" in the form, then you would create the following REST request
 
