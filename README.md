@@ -31,4 +31,3 @@ A User can search for an inputed city's weather | 20
 A User can search Stack Exchange for an inputed word | 25
 Your page looks really good. This is subjective, so wow us. | 10
 
-- In your efforts to make your page look good, make sure that you don't change the functionality of the assignment or you will be subject to losing points.
