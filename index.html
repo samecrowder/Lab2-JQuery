@@ -60,6 +60,9 @@
                     success : function(parsed_json, textStatus) {
                         var everything = "<ul>";
                         var items = parsed_json['items'].slice(0,10);
+                        if(items.length == 0) {
+                            everything += "<p>No results</p>";
+                        }
                         for (i = 0; i < items.length; i++) { 
                             var item = items[i];
                             everything += "<li><a target=\"_blank\" href=" + item['link'] + ">" + item['title'] + "</a>" + "</li>";
