@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <title>City Finder</title>
+        <script
+          src="http://code.jquery.com/jquery-3.2.1.min.js">
+        </script>
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <div id="topHeader" class="row bg-primary align-items-center">
+                <div class="text-center">Welcome to my Jquery Lab #2</div>
+            </div>
+            <div class="row bg-info">
+                <div class="col-sm-6 align-items-center">
+                    <form onsubmit="return false">
+                        <div id="utah-title" class="row">Enter A Utah City</div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <u>Suggestion</u>
+                                <div id="txtHint">Empty</div>
+                            </div>
+                            <div class="col-sm-8">
+                                <input autocomplete="off" type="text" id="cityField" value="">
+                                <input id="weatherButton" type="submit" value="Submit">
+                                <div>
+                                    <u>Current Weather</u>
+                                    <div id="weather">No weather</div><br>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <form onsubmit="return false">
+                        <div id="stack-title" class="row">Enter any word for links to relevant StackOverflow discussions</div>
+                        <div class="row">
+                            <input autocomplete="off" type="text" id="searchWord" value="">
+                            <input id="searchWordButton" type="button" value="Submit">
+                        </div>
+                    </form>
+                    <div id="searchResults"></div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            // Handles the click event and updating of the search word functionality
+            $("#searchWordButton").click(function(e) {
+                var searchWord = $("#searchWord").val();
+                var url = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=" + searchWord + "&site=stackoverflow";
+                $.ajax({
+                    type : "GET",
+                    timeout: 5000,
+                    url : url,
+                    dataType : "json",
+                    success : function(parsed_json, textStatus) {
+                        var everything = "<ul>";
+                        var items = parsed_json['items'].slice(0,10);
+                        for (i = 0; i < items.length; i++) { 
+                            var item = items[i];
+                            everything += "<li><a target=\"_blank\" href=" + item['link'] + ">" + item['title'] + "</a>" + "</li>";
+                        }
+                        $("#searchResults").html(everything);
+                    }
+                });
+            });
+            
+            // Handles the city suggestion list updating
+            $(document).ready(function() {
+                $( "#cityField" ).keyup(function() {
+                    var cityFieldVal = $("#cityField").val().toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1).toLowerCase()).join(' ');
+                    var url = "http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q="+cityFieldVal;
+                    $.getJSON(url,function(data) {
+                        var everything;
+                        everything = "<ul class=\"list-spacing\">";
+                        $.each(data, function(i,item) {
+                            everything += "<li> "+ data[i].city + "</li>";
+                        });
+                        everything += "</ul>";
+                        $("#txtHint").html(everything);
+                })
+                .done(function() { console.log('getJSON request succeeded!'); })
+                .fail(function(jqXHR, textStatus, errorThrown) { 
+                    console.log('getJSON request failed! ' + textStatus); 
+                    console.log("incoming "+jqXHR.responseText);
+                });
+            });
+            
+            // Handles the click event and GET request to pull current weather data
+            $("#weatherButton").click(function(e){
+                var value = $("#cityField").val().toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1).toLowerCase()).join(' ');
+                e.preventDefault();
+                $("#displayCity").text(value);
+                
+                var myurl= "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=f0c92a207d350aa5ee5210fba52dd1d8&q=";
+                myurl += value;
+                $.ajax({
+                    type : "GET",
+                    timeout: 5000,
+                    url : myurl,
+                    dataType : "json",
+                    success : function(parsed_json, textStatus) {
+                        var everything;
+                        var location = parsed_json['name'];
+                        var weather = parsed_json['weather'][0]['main'];
+                        var temp = parsed_json['main']['temp'];
+                        var weather_icon = parsed_json['weather'][0]['icon'];
+                        var humidity = parsed_json['main']['humidity'];
+                        var temp_min = parsed_json['main']['temp_min'];
+                        var temp_max = parsed_json['main']['temp_max'];
+                        var wind_speed = parsed_json['wind']['speed'];
+                        everything = "<img src=\"http://openweathermap.org/img/w/" + weather_icon + ".png\"/>"
+                        everything += "<p class=\"weather-p\">Location: " + location;
+                        everything += "<p class=\"weather-p\">Weather: " + weather + " (" + temp + "&#8457;)";
+                        everything += "<p class=\"weather-p\">Low: " + temp_min + "&#8457; | High: " + temp_max + "&#8457;";
+                        everything += "<p class=\"weather-p\">Humidity: " + humidity + "%";
+                        everything += "<p class=\"weather-p\">Wind: " + wind_speed + " mph";
+                        $("#weather").html(everything);
+                    },
+                    statusCode: {
+                        404: function() {
+                            var everything = "<p>City does not exist. Try again.</p>";
+                            $("#weather").html(everything);
+                        }
+                    }
+                });
+            });
+        });
+        </script>
+    
+    </body>
+</html>

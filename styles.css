@@ -1,0 +1,26 @@
+#topHeader {
+    color: black;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 400%;
+    padding: 15px;
+}
+
+form {
+    text-align: center;
+}
+
+.list-spacing {
+    text-indent: -40px;
+}
+
+#utah-title {
+    font-size: 200%;
+}
+
+#stack-title {
+    font-size: 140%;
+}
+
+.weather-p {
+    margin-bottom: 0px;
+}
